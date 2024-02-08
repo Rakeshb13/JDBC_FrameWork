@@ -3,15 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testScripts.TC01_LoginTest">
+      <class name="DataBaseTestingScripts.DataBaseTestCase01">
         <methods>
-          <include name="beforeSuite"/>
-          <include name="afterSuite"/>
-          <include name="loginTestCase"/>
-          <include name="launchbrowser"/>
-          <include name="closeBrowser"/>
+          <include name="dataBaseTestCase01"/>
         </methods>
-      </class> <!-- testScripts.TC01_LoginTest -->
+      </class> <!-- DataBaseTestingScripts.DataBaseTestCase01 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -35,7 +35,7 @@ public class DataUtility extends BaseTest {
 		Object[][] arr = new Object[lastRowNum][2];
 
 		for (int i = 0; i < lastRowNum; i++) {
-			ResultSet result = statement.executeQuery(getQueryFromExcel() + "'" + allEmail.get(i) + "';");
+			ResultSet result = statement.executeQuery(getUIQueryFromExcel() + "'" + allEmail.get(i) + "';");
 
 			while (result.next()) {
 				arr[i][0] = result.getString("Email");
@@ -64,11 +64,48 @@ public class DataUtility extends BaseTest {
 
 	}
 
-	public String getQueryFromExcel() throws EncryptedDocumentException, IOException {
+	public String getUIQueryFromExcel() throws EncryptedDocumentException, IOException {
 		FileInputStream fis = new FileInputStream(ExcelFile_Path);
 		Workbook book = WorkbookFactory.create(fis);
-		Sheet sh = book.getSheet(dbQuerySheetName);
+		Sheet sh = book.getSheet(dbUIQuerySheetName);
 		return sh.getRow(0).getCell(0).toString();
+	}
+	
+	public ArrayList<String> getDBQueryFromExcel() throws EncryptedDocumentException, IOException {
+		FileInputStream fis = new FileInputStream(ExcelFile_Path);
+		Workbook book = WorkbookFactory.create(fis);
+		Sheet sh = book.getSheet(dbTestQuerySheetName);
+
+		ArrayList<String> arr = new ArrayList<String>();
+		int lastRowNum = sh.getLastRowNum();
+
+		for (int i = 1; i < lastRowNum; i++) {
+			arr.add(sh.getRow(i).getCell(0).toString());
+		}
+		return arr;
+	}
+	
+	public ArrayList<String> getDBQueryResultFromExcel() throws EncryptedDocumentException, IOException
+	{
+		FileInputStream fis = new FileInputStream(ExcelFile_Path);
+		Workbook book = WorkbookFactory.create(fis);
+		Sheet sh = book.getSheet(dbTestQuerySheetName);
+		
+		ArrayList<String> arr = new ArrayList<String>();
+		int lastRowNum = sh.getLastRowNum();
+		
+		for (int i = 1; i < lastRowNum; i++) {
+			arr.add(sh.getRow(i).getCell(1).toString());
+		}
+		return arr;
+	}
+	
+	public String getResult(int rowNum) throws EncryptedDocumentException, IOException
+	{
+		FileInputStream fis = new FileInputStream(ExcelFile_Path);
+		Workbook book = WorkbookFactory.create(fis);
+		Sheet sh = book.getSheet(dbTestQuerySheetName);
+		return sh.getRow(rowNum+1).getCell(1).toString();
 	}
 
 }

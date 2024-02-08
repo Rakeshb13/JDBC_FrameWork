@@ -1,4 +1,4 @@
-package testScripts;
+package UITestScripts;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -36,9 +36,7 @@ public class TC01_LoginTest extends BaseTest{
 		Reporter.log("Login Test Case Pass...", true);
 		
 		home_page.getLogoutLink().click();
-		
-		
-		//System.out.println(email + " - "+ password);
+	
 	}
 	
 	

@@ -6,7 +6,8 @@ public interface FrameWorkConstant {
 	String dbUserName_Key="dbuser";
 	String dbPassword_Key="dbpassword";
 	String dbEmailSheetName="LoginEmail";
-	String dbQuerySheetName="SQLQuery";
+	String dbUIQuerySheetName="SQLQuery";
+	String dbTestQuerySheetName="TestSQLQuery";
 	String testUrl_Key="url";
 	long implicit_TimeOut=10;
 	String propertiesFile_Path="./src/test/resources/TestData/Test.properties";
